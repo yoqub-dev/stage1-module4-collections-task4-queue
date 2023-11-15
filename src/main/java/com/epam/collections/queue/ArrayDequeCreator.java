@@ -14,9 +14,15 @@ public class ArrayDequeCreator extends PriorityQueue<String> {
             arrayDeque.addLast(Objects.requireNonNull(secondQueue.poll()));
         }
 
-        // Add remaining elements from both queues
-        arrayDeque.addAll(firstQueue);
-        arrayDeque.addAll(secondQueue);
+        // If any queue has remaining elements, add one from each queue in turn
+        while (!firstQueue.isEmpty() || !secondQueue.isEmpty()) {
+            if (!firstQueue.isEmpty()) {
+                arrayDeque.addLast(firstQueue.poll());
+            }
+            if (!secondQueue.isEmpty()) {
+                arrayDeque.addLast(secondQueue.poll());
+            }
+        }
 
         return arrayDeque;
     }
