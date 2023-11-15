@@ -12,9 +12,11 @@ public class ArrayDequeCreator extends PriorityQueue<String> {
         while (!firstQueue.isEmpty() && !secondQueue.isEmpty()) {
             arrayDeque.addLast(firstQueue.poll());
             arrayDeque.addLast(Objects.requireNonNull(secondQueue.poll()));
-            arrayDeque.addLast(Objects.requireNonNull(firstQueue.poll())); // Adding one more from the firstQueue
-            arrayDeque.addLast(Objects.requireNonNull(secondQueue.poll())); // Adding one more from the secondQueue
         }
+
+        // Add remaining elements from both queues
+        arrayDeque.addAll(firstQueue);
+        arrayDeque.addAll(secondQueue);
 
         return arrayDeque;
     }
