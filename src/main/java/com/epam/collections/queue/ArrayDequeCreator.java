@@ -10,11 +10,12 @@ public class ArrayDequeCreator extends PriorityQueue<String> {
         ArrayDeque<Integer> arrayDeque = new ArrayDeque<>();
 
         while (!firstQueue.isEmpty() && !secondQueue.isEmpty()) {
-            arrayDeque.addLast(firstQueue.poll());
-            arrayDeque.addLast(Objects.requireNonNull(secondQueue.poll()));
-        }
+            arrayDeque.addLast(firstQueue.poll()); // Player 1 adds a card
+            arrayDeque.addLast(secondQueue.poll()); // Player 2 adds a card
 
-        // No need for the second loop; you've already added all elements in pairs
+            arrayDeque.addLast(firstQueue.poll()); // Player 1 adds another card
+            arrayDeque.addLast(secondQueue.poll()); // Player 2 adds another card
+        }
 
         return arrayDeque;
 
